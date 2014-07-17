@@ -50,7 +50,7 @@
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>Марка сигарет</string>
+        <string>Марка сигарет1</string>
        </property>
       </widget>
      </item>
@@ -86,33 +86,7 @@
       </layout>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox">
-       <item>
-        <property name="text">
-         <string>marlboro</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>more</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>LM</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Русский стиль</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string/>
-        </property>
-       </item>
-      </widget>
+      <widget class="QComboBox" name="comboBox"/>
      </item>
     </layout>
    </item>
