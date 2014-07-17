@@ -47,7 +47,7 @@
      <item>
       <widget class="QLabel" name="label_5">
        <property name="text">
-        <string>TextLabel</string>
+        <string>Марка сигарет 1</string>
        </property>
       </widget>
      </item>
