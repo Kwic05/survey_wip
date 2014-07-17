@@ -34,7 +34,7 @@
       <item>
        <widget class="QPushButton" name="pushButton_3">
         <property name="text">
-         <string>ИмпорsтироzxZxZват333333ь БД</string>
+         <string>Импортировать БД</string>
         </property>
        </widget>
       </item>
