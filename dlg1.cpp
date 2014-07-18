@@ -6,6 +6,7 @@
 #include <QSqlRecord>
 #include <QSqlError>
 #include "dlg4.h"
+#include <QSqlQueryModel>
 
 dlg1::dlg1(QWidget *parent) :
     QDialog(parent),
@@ -35,7 +36,6 @@ void dlg1::initializate()
 
 
 
-
     if (qc_->query.next()) {
         QSqlRecord rec  = qc_->query.record();
 
@@ -47,7 +47,9 @@ void dlg1::initializate()
         setMessage(strfio, strpol, strdr, strkur);
     }
 
-
+    QSqlQueryModel *model = new QSqlQueryModel();
+    model->setQuery(qc_->query2);
+    ui->comboBox->setModel(model);
 
 }
 

@@ -15,7 +15,7 @@ public:
 
     void executeSelect();
 
-    QSqlQuery query;
+    QSqlQuery query,query2;
 };
 
 #endif // QUERYCONTAINER_H
