@@ -21,6 +21,13 @@ public:
     QString myString;
     QSqlQuery qs_;
 
+    void setQueryContainer(QueryContainer* qc){
+        qc_ = qc;
+    }
+
+    void initializate();
+       QueryContainer* qc_;
+
 private slots:
     void on_pushButton_clicked();
 
