@@ -18,7 +18,7 @@ public:
     explicit dlg1(QWidget *parent = 0);
     ~dlg1();
 
-    void setMessage(const QString& str1, const QString& str2, const QString& str3, const QString& kur);
+    void setMessage(const QString& str1, const QString& str2, const QString& str3, const QString& kur, const QString& id2);
 
     void setQueryContainer(QueryContainer* qc){
         qc_ = qc;

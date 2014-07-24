@@ -20,13 +20,14 @@ dlg1::~dlg1()
     delete ui;
 }
 
-void dlg1::setMessage(const QString &str1, const QString &str2, const QString &str3, const QString &kur)
+void dlg1::setMessage(const QString &str1, const QString &str2, const QString &str3, const QString &kur, const QString &id2)
 {
         ui->lineEdit_4->setText(str1);
         ui->lineEdit_5->setText(str2);
         ui->lineEdit_6->setText(str3);
         if (kur.contains("y")) {ui->radioButton_4->toggle();}
         else ui->radioButton_3->toggle();
+
 
 
  }
@@ -42,9 +43,10 @@ void dlg1::initializate()
         QString strfio  = qc_->query.value(rec.indexOf("FIO")).toString(),
         strpol  = qc_->query.value(rec.indexOf("pol")).toString(),
         strdr   = qc_->query.value(rec.indexOf("dr")).toString(),
-        strkur  = qc_->query.value(rec.indexOf("kurenie")).toString();
+        strkur  = qc_->query.value(rec.indexOf("kurenie")).toString(),
+        strid2  = qc_->query.value(rec.indexOf("id2")).toString();
 
-        setMessage(strfio, strpol, strdr, strkur);
+        setMessage(strfio, strpol, strdr, strkur, strid2);;
 
     }
 
@@ -63,8 +65,8 @@ void dlg1::on_pushButton_7_clicked()
         strpol  = qc_->query.value(rec.indexOf("pol")).toString(),
         strdr   = qc_->query.value(rec.indexOf("dr")).toString(),
         strkur  = qc_->query.value(rec.indexOf("kurenie")).toString();
-
-        setMessage(strfio, strpol, strdr, strkur);
+        strid2  = qc_->query.value(rec.indexOf("id2")).toString();
+        setMessage(strfio, strpol, strdr, strkur, strid2);
     }
     else
     {
@@ -75,8 +77,8 @@ void dlg1::on_pushButton_7_clicked()
             strpol  = qc_->query.value(rec.indexOf("pol")).toString(),
             strdr   = qc_->query.value(rec.indexOf("dr")).toString(),
             strkur  = qc_->query.value(rec.indexOf("kurenie")).toString();
-
-            setMessage(strfio, strpol, strdr, strkur);
+            strid2  = qc_->query.value(rec.indexOf("id2")).toString();
+            setMessage(strfio, strpol, strdr, strkur, strid2);
         }
     }
 
@@ -91,8 +93,8 @@ void dlg1::on_pushButton_6_clicked()
         strpol  = qc_->query.value(rec.indexOf("pol")).toString(),
         strdr   = qc_->query.value(rec.indexOf("dr")).toString(),
         strkur  = qc_->query.value(rec.indexOf("kurenie")).toString();
-
-        setMessage(strfio, strpol, strdr, strkur);
+        strid2  = qc_->query.value(rec.indexOf("id2")).toString();
+        setMessage(strfio, strpol, strdr, strkur, strid2);
     }
     else
     {
@@ -103,8 +105,8 @@ void dlg1::on_pushButton_6_clicked()
             strpol  = qc_->query.value(rec.indexOf("pol")).toString(),
             strdr   = qc_->query.value(rec.indexOf("dr")).toString(),
             strkur  = qc_->query.value(rec.indexOf("kurenie")).toString();
-
-            setMessage(strfio, strpol, strdr, strkur );
+            strid2  = qc_->query.value(rec.indexOf("id2")).toString();
+            setMessage(strfio, strpol, strdr, strkur, strid2);
         }
     }
 }
@@ -118,8 +120,8 @@ void dlg1::on_pushButton_5_clicked()
         strpol  = qc_->query.value(rec.indexOf("pol")).toString(),
         strdr   = qc_->query.value(rec.indexOf("dr")).toString(),
         strkur  = qc_->query.value(rec.indexOf("kurenie")).toString();
-
-        setMessage(strfio, strpol, strdr, strkur );
+        strid2  = qc_->query.value(rec.indexOf("id2")).toString();
+        setMessage(strfio, strpol, strdr, strkur, strid2);
     }
 }
 
@@ -132,7 +134,7 @@ void dlg1::on_pushButton_8_clicked()
         strpol  = qc_->query.value(rec.indexOf("pol")).toString(),
         strdr   = qc_->query.value(rec.indexOf("dr")).toString(),
         strkur  = qc_->query.value(rec.indexOf("kurenie")).toString();
-
-        setMessage(strfio, strpol, strdr, strkur);
+        strid2  = qc_->query.value(rec.indexOf("id2")).toString();
+        setMessage(strfio, strpol, strdr, strkur, strid2);
     }
 }
