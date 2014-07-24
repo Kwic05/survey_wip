@@ -4,7 +4,7 @@
 #include <QDebug>
 #include <QSqlError>
 #include <QMessageBox>
-
+#include <QSqlQueryModel>
 
 
 
@@ -29,6 +29,9 @@ void dlg2::initializate()
          QSqlRecord rec  = qc_->query.record();
          nNumber = qc_->query.value(rec.indexOf("id")).toInt();
      }
+     QSqlQueryModel *model = new QSqlQueryModel();
+     model->setQuery(qc_->query2);
+     ui->fontComboBox->setModel(model);
 }
 
 void dlg2::on_pushButton_2_clicked()

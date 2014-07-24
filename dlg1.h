@@ -3,6 +3,7 @@
 
 #include <QDialog>
 
+
 #include "querycontainer.h"
 
 namespace Ui {

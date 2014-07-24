@@ -45,6 +45,7 @@ void dlg1::initializate()
         strkur  = qc_->query.value(rec.indexOf("kurenie")).toString();
 
         setMessage(strfio, strpol, strdr, strkur);
+
     }
 
     QSqlQueryModel *model = new QSqlQueryModel();
