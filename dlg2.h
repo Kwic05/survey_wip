@@ -31,7 +31,7 @@ private slots:
 private:
     Ui::dlg2 *ui;
     QueryContainer* qc_;
-   int nNumber;
+   int nNumber, nNumber2;
 };
 
 #endif // DLG2_H

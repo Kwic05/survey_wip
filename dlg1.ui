@@ -43,7 +43,7 @@
      <item>
       <widget class="QLabel" name="label_8">
        <property name="text">
-        <string>Курител вы?</string>
+        <string>Курите ли вы?</string>
        </property>
       </widget>
      </item>
