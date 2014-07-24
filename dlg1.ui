@@ -50,7 +50,7 @@
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>Марка сигарет1</string>
+        <string>Марка сигарет</string>
        </property>
       </widget>
      </item>
@@ -88,6 +88,9 @@
      <item>
       <widget class="QComboBox" name="comboBox">
        <property name="acceptDrops">
+        <bool>false</bool>
+       </property>
+       <property name="editable">
         <bool>false</bool>
        </property>
       </widget>

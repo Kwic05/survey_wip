@@ -25,6 +25,19 @@ void dlg1::setMessage(const QString &str1, const QString &str2, const QString &s
         ui->lineEdit_4->setText(str1);
         ui->lineEdit_5->setText(str2);
         ui->lineEdit_6->setText(str3);
+
+
+
+        QSqlQueryModel *mdl = new QSqlQueryModel;
+
+
+        QString z = "SELECT mark FROM asd WHERE id2 = '%1'";
+        QString x;
+        x = z.arg(id2);
+        if (!qc_->query2.exec(x)) {}
+        mdl->setQuery(qc_->query2);
+        ui->comboBox->setModel(mdl);
+
         if (kur.contains("y")) {ui->radioButton_4->toggle();}
         else ui->radioButton_3->toggle();
 
@@ -64,7 +77,7 @@ void dlg1::on_pushButton_7_clicked()
         QString strfio  = qc_->query.value(rec.indexOf("FIO")).toString(),
         strpol  = qc_->query.value(rec.indexOf("pol")).toString(),
         strdr   = qc_->query.value(rec.indexOf("dr")).toString(),
-        strkur  = qc_->query.value(rec.indexOf("kurenie")).toString();
+        strkur  = qc_->query.value(rec.indexOf("kurenie")).toString(),
         strid2  = qc_->query.value(rec.indexOf("id2")).toString();
         setMessage(strfio, strpol, strdr, strkur, strid2);
     }
@@ -76,7 +89,7 @@ void dlg1::on_pushButton_7_clicked()
             QString strfio  = qc_->query.value(rec.indexOf("FIO")).toString(),
             strpol  = qc_->query.value(rec.indexOf("pol")).toString(),
             strdr   = qc_->query.value(rec.indexOf("dr")).toString(),
-            strkur  = qc_->query.value(rec.indexOf("kurenie")).toString();
+            strkur  = qc_->query.value(rec.indexOf("kurenie")).toString(),
             strid2  = qc_->query.value(rec.indexOf("id2")).toString();
             setMessage(strfio, strpol, strdr, strkur, strid2);
         }
@@ -92,7 +105,7 @@ void dlg1::on_pushButton_6_clicked()
         QString strfio  = qc_->query.value(rec.indexOf("FIO")).toString(),
         strpol  = qc_->query.value(rec.indexOf("pol")).toString(),
         strdr   = qc_->query.value(rec.indexOf("dr")).toString(),
-        strkur  = qc_->query.value(rec.indexOf("kurenie")).toString();
+        strkur  = qc_->query.value(rec.indexOf("kurenie")).toString(),
         strid2  = qc_->query.value(rec.indexOf("id2")).toString();
         setMessage(strfio, strpol, strdr, strkur, strid2);
     }
@@ -104,7 +117,7 @@ void dlg1::on_pushButton_6_clicked()
             QString strfio  = qc_->query.value(rec.indexOf("FIO")).toString(),
             strpol  = qc_->query.value(rec.indexOf("pol")).toString(),
             strdr   = qc_->query.value(rec.indexOf("dr")).toString(),
-            strkur  = qc_->query.value(rec.indexOf("kurenie")).toString();
+            strkur  = qc_->query.value(rec.indexOf("kurenie")).toString(),
             strid2  = qc_->query.value(rec.indexOf("id2")).toString();
             setMessage(strfio, strpol, strdr, strkur, strid2);
         }
@@ -119,7 +132,7 @@ void dlg1::on_pushButton_5_clicked()
         QString strfio  = qc_->query.value(rec.indexOf("FIO")).toString(),
         strpol  = qc_->query.value(rec.indexOf("pol")).toString(),
         strdr   = qc_->query.value(rec.indexOf("dr")).toString(),
-        strkur  = qc_->query.value(rec.indexOf("kurenie")).toString();
+        strkur  = qc_->query.value(rec.indexOf("kurenie")).toString(),
         strid2  = qc_->query.value(rec.indexOf("id2")).toString();
         setMessage(strfio, strpol, strdr, strkur, strid2);
     }
@@ -133,7 +146,7 @@ void dlg1::on_pushButton_8_clicked()
         QString strfio  = qc_->query.value(rec.indexOf("FIO")).toString(),
         strpol  = qc_->query.value(rec.indexOf("pol")).toString(),
         strdr   = qc_->query.value(rec.indexOf("dr")).toString(),
-        strkur  = qc_->query.value(rec.indexOf("kurenie")).toString();
+        strkur  = qc_->query.value(rec.indexOf("kurenie")).toString(),
         strid2  = qc_->query.value(rec.indexOf("id2")).toString();
         setMessage(strfio, strpol, strdr, strkur, strid2);
     }
