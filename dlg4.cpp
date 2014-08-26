@@ -89,7 +89,7 @@ void dlg4::on_pushButton_2_clicked()
                         qDebug()<<"qm->";
 
                 QString strmark_imp  = qm_->value(rec_imp.indexOf("mark")).toString(),
-                        strid2_imp  = qm_->value(rec_imp.indexOf("id2")).toString();
+                        strid2_imp   = qm_->value(rec_imp.indexOf("id2")).toString();
 
                 while (qc_->query2.next()) {
                      qDebug()<<"qm_-> qc_->";
