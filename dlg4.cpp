@@ -41,204 +41,71 @@ void dlg4::on_pushButton_clicked()
     ui->tableView->setModel(model);
 }
 
+struct Cigarette
+{
+    int id;
+    QString name;
+    int quantity;
+    int nicotine;
+};
+
+struct Survey
+{
+    QString fio;
+    QString gender;
+    QString birthDate;
+    QString smocking;
+    int cigaretteId;
+    Cigarette* cigarette;
+};
+
 void dlg4::on_pushButton_2_clicked()
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase ("QSQLITE","connection3") ;
-    db.setDatabaseName(ui->lineEdit->text());
-    if (!db.open()){qDebug()<<"222";}
-    QSqlQuery* qs_ = new QSqlQuery(db);
-    qDebug()<<qs_->lastError().text();
-    qs_->exec("ALTER TABLE zxc ADD COLUMN id3 INT AFTER id2");
-    qs_->exec("UPDATE zxc SET id3 = '0'");
-    qs_->exec("select * from zxc order by id");
+    QSqlDatabase db2 = QSqlDatabase::addDatabase("QSQLITE", "joiningConnection");
+    db2.setDatabaseName(ui->lineEdit->text());
+    qDebug() << "open: " << db2.open();
 
-    int nNumber2=0;
-    qDebug()<<nNumber2;
-    qc_->executeSelect();
-    if (qc_->query.last()) {
-        QSqlRecord rec3  = qc_->query.record();
-        nNumber2 = nNumber2 + qc_->query.value(rec3.indexOf("id")).toInt();
-    }
-    qDebug()<<nNumber2 ;
-    nNumber2 = nNumber2 + 1;
-    qDebug()<<nNumber2;
-    QSqlRecord rec2  = qs_->record();
+    typedef QMap<int, Cigarette*> Cigarette2Map;
+    Cigarette2Map cigarette2Map;
 
-    //итератор
-    int nNumber22=0;
-    qDebug()<<nNumber22;
-    qc_->executeSelect();
-    if (qc_->query2.last()) {
-        QSqlRecord rec3_imp  = qc_->query2.record();
-        nNumber22 = nNumber22 + qc_->query2.value(rec3_imp.indexOf("id2")).toInt();
-    }
-    qDebug()<<nNumber22;
-    nNumber22 = nNumber22 + 1;
-    qDebug()<<nNumber22;
-
-
-    QSqlQuery* qm_ = new QSqlQuery(db);
-
-
-    qm_->exec("ALTER TABLE asd ADD COLUMN id3 INT AFTER nikotin");
-    qm_->exec("UPDATE asd SET id3 = '0'");
-    qm_->exec("select * from asd order by id2");
-
-
-
-    QSqlRecord rec_imp = qm_->record();
-    QSqlRecord rec  = qc_->query2.record();
-    while (qc_->query2.previous()) {
-        qDebug()<<"qc_->";
-
-
-        QString strmark  = qc_->query2.value(rec.indexOf("mark")).toString(),
-                strid2  = qc_->query2.value(rec.indexOf("id2")).toString();
-        qDebug()<<strmark;
-
-
-
-        if (qm_->first()) {qm_->previous();}
-
-        while (qm_->next()) {
-            qDebug()<<"qm->";
-
-            QString strmark_imp  = qm_->value(rec_imp.indexOf("mark")).toString(),
-                    strid2_imp   = qm_->value(rec_imp.indexOf("id2")).toString(),
-                    strid3_imp   = qm_->value(rec_imp.indexOf("id3")).toString();
-            qDebug()<<strmark_imp;
-            int i=0;
-
-            if (strmark_imp == strmark) {
-
-                i=1;
-                qDebug()<<"if1";
-                QString e = "UPDATE asd"
-                        " SET id3 = '%1'"
-                        " WHERE id2 = '%2'";
-
-                QString f = "UPDATE zxc"
-                        " SET id3 = '%1'"
-                        " WHERE id2 = '%2'";
-
-                QString w;
-                w = e.arg(strid2)
-                        .arg(strid2_imp);
-
-                QString l;
-                l = f.arg(strid2)
-                        .arg(strid2_imp);
-                qDebug()<<l;
-                qDebug()<<w;
-
-                if (!qm_->exec(w)) {qDebug()<<w;}
-                if (!qs_->exec(l)) {qDebug()<<l;}
-                qm_->exec("select * from asd order by id2");
-                qs_->exec("select * from zxc order by id");
-            }
-            else
-            {
-
-                if (strid3_imp == "0") {
-                    if (i==0){
-                        qDebug()<<"if2";
-                        QString e = "UPDATE asd"
-                                " SET id3 = '%1'"
-                                " WHERE id2 = '%2'";
-                        QString w;
-                        w = e.arg(nNumber22)
-                                .arg(strid2_imp);
-                        qDebug()<<w;
-                        if (!qm_->exec(w)) {qDebug()<<w;}
-
-                        QString f = "UPDATE zxc"
-                                " SET id3 = '%1'"
-                                " WHERE id2 = '%2'";
-                        QString l;
-                        l = f.arg(nNumber22)
-                                .arg(strid2_imp);
-                        qDebug()<<l;
-                        if (!qm_->exec(l)) {qDebug()<<l;}
-                        nNumber22++;
-
-                        qm_->exec("select * from asd order by id2");
-                        qs_->exec("select * from zxc order by id");
-                    }
-                }
-            }
-
-        }
-
-
-
-    }
-
-
-
-    qDebug()<<"rabotaet";
-
-    if (qm_->first()) {
-
-        QString z = "INSERT INTO asd(mark, id2, kol, nikotin)"
-                "VALUES('%1', '%2', '%3', '%4');";
-        QString x;
-        x = z.arg(qm_->value(rec_imp.indexOf("mark")).toString())
-                .arg(qm_->value(rec_imp.indexOf("id3")).toString())
-                .arg(qm_->value(rec_imp.indexOf("kol")).toString())
-                .arg(qm_->value(rec_imp.indexOf("nikotin")).toString());
-        qDebug()<<x<<"2asdasa";
-        if (!qc_->query2.exec(x)) {qDebug()<<qs_->lastError().text();}
-
-    }
-
-    while (qm_->next()) {
-
-        QString z = "INSERT INTO asd(mark, id2, kol, nikotin)"
-                "VALUES('%1', '%2', '%3', '%4');";
-        QString x;
-        x = z.arg(qm_->value(rec_imp.indexOf("mark")).toString())
-                .arg(qm_->value(rec_imp.indexOf("id3")).toString())
-                .arg(qm_->value(rec_imp.indexOf("kol")).toString())
-                .arg(qm_->value(rec_imp.indexOf("nikotin")).toString());
-        qDebug()<<x<<"2asdasa";
-        if (!qc_->query2.exec(x)) {qDebug()<<qs_->lastError().text();}
-
-    }
-
-
-    if (qs_->first()) {
-
-
-        QString z = "INSERT INTO zxc(id, FIO, pol, dr, kurenie, id2)"
-                "VALUES('%1', '%2', '%3', '%4', '%5', '%6');";
-        QString x;
-        x = z.arg(nNumber2)
-                .arg(qs_->value(rec2.indexOf("FIO")).toString())
-                .arg(qs_->value(rec2.indexOf("pol")).toString())
-                .arg(qs_->value(rec2.indexOf("dr")).toString())
-                .arg(qs_->value(rec2.indexOf("kurenie")).toString())
-                .arg(qs_->value(rec2.indexOf("id3")).toString());
-        qDebug()<<x<<"2asdasa";
-
-        if (!qc_->query.exec(x)) {qDebug()<<qs_->lastError().text();}
-    }
-
-
-    while (qs_->next())
     {
-        nNumber2 = nNumber2 + 1;
-        QString z = "INSERT INTO zxc(id, FIO, pol, dr, kurenie, id2)"
-                "VALUES('%1', '%2', '%3', '%4', '%5', '%6');";
-        QString x;
-        x = z.arg(nNumber2)
-                .arg(qs_->value(rec2.indexOf("FIO")).toString())
-                .arg(qs_->value(rec2.indexOf("pol")).toString())
-                .arg(qs_->value(rec2.indexOf("dr")).toString())
-                .arg(qs_->value(rec2.indexOf("kurenie")).toString())
-                .arg(qs_->value(rec2.indexOf("id3")).toString());
-        qDebug()<<x;
+        QString cigarette2Query = "SELECT id2,mark,kol,nikotin FROM asd";
+        QSqlQuery q(cigarette2Query, db2);
 
-        if (!qc_->query.exec(x)) {qDebug()<<qs_->lastError().text();}
+        while(q.next()) {
+            auto cig = new Cigarette;
+            cig->id = q.value("id2").toInt();
+            cig->name = q.value("mark").toString();
+            cig->nicotine = q.value("nikotin").toInt();
+            cig->quantity = q.value("kol").toInt();
+
+            cigarette2Map[cig->id] = cig;
+        }
+    }
+
+    QVector<Survey> survies2;
+
+    {
+        QString survies2Query = "";
+        QSqlQuery q;
+
+        while(q.next()) {
+            Survey s;
+            s.fio = q.value();
+
+
+            Cigarette2Map::const_iterator it = cigarette2Map.find(s.cigaretteId);
+            s.cigarette = it!=cigarette2Map.cend()? *it: 0;
+
+            survies2.push_back(s);
+        }
+    }
+
+    QMap<QString, int> cigarette1Map;
+
+    {
 
     }
+
+
 }
